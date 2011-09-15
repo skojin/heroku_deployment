@@ -47,12 +47,12 @@ module HerokuDeployment
       HerokuDeployment::Git.commit
       unless HerokuDeployment::Config.skip_push_to_heroku
         HerokuDeployment::Git.push_remote
-        HerokuDeployment::Git.pull_remote
+        #HerokuDeployment::Git.pull_remote
       else
         puts "SKIPPING HEROKU DEPLOYMENT"
       end
       HerokuDeployment::Git.push
-      HerokuDeployment::Git.pull
+      #HerokuDeployment::Git.pull
       db_migrate if HerokuDeployment::Config.migrate
       HerokuDeployment::Hoptoad.deployed! if HerokuDeployment::Config.hoptoad
     end
